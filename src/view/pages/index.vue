@@ -32,8 +32,7 @@
               target="_blank"
               rel="noopener noreferrer"
               title="chat"
-            >
-              discord </a
+              >discord</a
             >.
           </p>
           <p>
@@ -43,8 +42,7 @@
               target="_blank"
               rel="noopener noreferrer"
               title="contribute"
-            >
-              issue board </a
+              >issue board</a
             >.
           </p>
           <p>
@@ -52,44 +50,47 @@
             more exciting features in the future.
           </p>
           <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
+            <em>
+              <small>&mdash; John Leider</small>
+            </em>
           </div>
           <hr class="my-3" />
           <a
             href="https://nuxtjs.org/"
             target="_blank"
             rel="noopener noreferrer"
+            >Nuxt Documentation</a
           >
-            Nuxt Documentation
-          </a>
           <br />
           <a
             href="https://github.com/nuxt/nuxt.js"
             target="_blank"
             rel="noopener noreferrer"
+            >Nuxt GitHub</a
           >
-            Nuxt GitHub
-          </a>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire">
-            Continue
-          </v-btn>
+          <v-btn color="primary" nuxt to="/inspire">Continue</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+<script lang="ts">
+import Vue from 'vue'
+import Logo from '@/view/components/Logo.vue'
+import VuetifyLogo from '@/view/components/VuetifyLogo.vue'
+import { testController } from '@/controller'
 
-export default {
+export default Vue.extend({
   components: {
     Logo,
     VuetifyLogo,
   },
-}
+  beforeMount() {
+    testController()
+  },
+})
 </script>

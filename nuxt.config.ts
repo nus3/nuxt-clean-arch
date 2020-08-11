@@ -1,3 +1,4 @@
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin'
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
@@ -6,6 +7,8 @@ const config: NuxtConfig = {
    ** See https://nuxtjs.org/api/configuration-mode
    */
   mode: 'spa',
+  srcDir: 'src/view',
+
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -68,7 +71,19 @@ const config: NuxtConfig = {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    extend(config, _) {
+      if (!config.resolve) {
+        config.resolve = {}
+      }
+      if (!config.resolve.plugins) {
+        config.resolve.plugins = []
+      }
+      config.resolve.plugins.push(
+        new TsconfigPathsPlugin({ configFile: './tsconfig.json' })
+      )
+    },
+  },
 }
 
 export default config
